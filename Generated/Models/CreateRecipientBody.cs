@@ -56,6 +56,8 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public global::Formalingo.Sdk.Generated.Models.CreateRecipientBody_prefill Prefill { get; set; }
 #endif
+        /// <summary>If true, suppresses recipient_invite notification for this recipient.</summary>
+        public bool? SuppressNotifications { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.CreateRecipientBody"/> and sets the default values.
         /// </summary>
@@ -87,6 +89,7 @@ namespace Formalingo.Sdk.Generated.Models
                 { "password", n => { Password = n.GetStringValue(); } },
                 { "phone", n => { Phone = n.GetStringValue(); } },
                 { "prefill", n => { Prefill = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.CreateRecipientBody_prefill>(global::Formalingo.Sdk.Generated.Models.CreateRecipientBody_prefill.CreateFromDiscriminatorValue); } },
+                { "suppress_notifications", n => { SuppressNotifications = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -102,6 +105,7 @@ namespace Formalingo.Sdk.Generated.Models
             writer.WriteStringValue("password", Password);
             writer.WriteStringValue("phone", Phone);
             writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.CreateRecipientBody_prefill>("prefill", Prefill);
+            writer.WriteBoolValue("suppress_notifications", SuppressNotifications);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

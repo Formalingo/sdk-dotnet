@@ -9,37 +9,41 @@ namespace Formalingo.Sdk.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreateSubmissionBody : IAdditionalDataHolder, IParsable
+    public partial class SubmissionPdf : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>One entry per signer role. Must provide all required roles.</summary>
+        /// <summary>The completedAt property</summary>
+        public DateTimeOffset? CompletedAt { get; set; }
+        /// <summary>Presigned download URL. Expires in 5 minutes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Formalingo.Sdk.Generated.Models.SignerInput>? Signers { get; set; }
+        public string? DownloadUrl { get; set; }
 #nullable restore
 #else
-        public List<global::Formalingo.Sdk.Generated.Models.SignerInput> Signers { get; set; }
+        public string DownloadUrl { get; set; }
 #endif
-        /// <summary>If true, suppresses signer_invite notifications for all signers in this submission.</summary>
-        public bool? SuppressNotifications { get; set; }
+        /// <summary>URL expiry in seconds</summary>
+        public double? ExpiresIn { get; set; }
+        /// <summary>The submissionId property</summary>
+        public Guid? SubmissionId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.SubmissionPdf"/> and sets the default values.
         /// </summary>
-        public CreateSubmissionBody()
+        public SubmissionPdf()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody"/></returns>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.SubmissionPdf"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Formalingo.Sdk.Generated.Models.SubmissionPdf CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody();
+            return new global::Formalingo.Sdk.Generated.Models.SubmissionPdf();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -49,8 +53,10 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "signers", n => { Signers = n.GetCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.SignerInput>(global::Formalingo.Sdk.Generated.Models.SignerInput.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "suppress_notifications", n => { SuppressNotifications = n.GetBoolValue(); } },
+                { "completedAt", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
+                { "downloadUrl", n => { DownloadUrl = n.GetStringValue(); } },
+                { "expiresIn", n => { ExpiresIn = n.GetDoubleValue(); } },
+                { "submissionId", n => { SubmissionId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -60,8 +66,10 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.SignerInput>("signers", Signers);
-            writer.WriteBoolValue("suppress_notifications", SuppressNotifications);
+            writer.WriteDateTimeOffsetValue("completedAt", CompletedAt);
+            writer.WriteStringValue("downloadUrl", DownloadUrl);
+            writer.WriteDoubleValue("expiresIn", ExpiresIn);
+            writer.WriteGuidValue("submissionId", SubmissionId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

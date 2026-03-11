@@ -12,9 +12,9 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents
         #pragma warning disable CS1591
         Draft,
         #pragma warning restore CS1591
-        [EnumMember(Value = "sent")]
+        [EnumMember(Value = "published")]
         #pragma warning disable CS1591
-        Sent,
+        Published,
         #pragma warning restore CS1591
         [EnumMember(Value = "completed")]
         #pragma warning disable CS1591
