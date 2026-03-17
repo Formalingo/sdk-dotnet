@@ -46,7 +46,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Map of field ID → pre-filled value. Creates DocumentResponse records immediately.</summary>
+        /// <summary>Map of field identifier → pre-filled value. Keys can be field UUIDs or field labels. Label-based keys are resolved against fields assigned to this signer&apos;s role. If a label matches multiple fields for the same role, the request is rejected with disambiguation details. Creates DocumentResponse records immediately.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Formalingo.Sdk.Generated.Models.SignerInput_prefill? Prefill { get; set; }
@@ -56,13 +56,13 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>If true, prefilled fields are marked read-only on the document</summary>
         public bool? PrefillReadonly { get; set; }
-        /// <summary>List of field IDs to mark as read-only for this signer, regardless of the document-level isReadOnly setting. Useful for locking specific fields per-signer at submission time.</summary>
+        /// <summary>List of field IDs or field labels to mark as read-only for this signer, regardless of the document-level isReadOnly setting. Labels are resolved against fields assigned to this signer&apos;s role. Useful for locking specific fields per-signer at submission time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ReadonlyFieldIds { get; set; }
+        public List<string>? ReadonlyFieldIds { get; set; }
 #nullable restore
 #else
-        public List<Guid?> ReadonlyFieldIds { get; set; }
+        public List<string> ReadonlyFieldIds { get; set; }
 #endif
         /// <summary>Must match a signer role defined in the document editor</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -103,7 +103,7 @@ namespace Formalingo.Sdk.Generated.Models
                 { "phone", n => { Phone = n.GetStringValue(); } },
                 { "prefill", n => { Prefill = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.SignerInput_prefill>(global::Formalingo.Sdk.Generated.Models.SignerInput_prefill.CreateFromDiscriminatorValue); } },
                 { "prefillReadonly", n => { PrefillReadonly = n.GetBoolValue(); } },
-                { "readonlyFieldIds", n => { ReadonlyFieldIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
+                { "readonlyFieldIds", n => { ReadonlyFieldIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "role", n => { Role = n.GetStringValue(); } },
             };
         }
@@ -120,7 +120,7 @@ namespace Formalingo.Sdk.Generated.Models
             writer.WriteStringValue("phone", Phone);
             writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.SignerInput_prefill>("prefill", Prefill);
             writer.WriteBoolValue("prefillReadonly", PrefillReadonly);
-            writer.WriteCollectionOfPrimitiveValues<Guid?>("readonlyFieldIds", ReadonlyFieldIds);
+            writer.WriteCollectionOfPrimitiveValues<string>("readonlyFieldIds", ReadonlyFieldIds);
             writer.WriteStringValue("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }

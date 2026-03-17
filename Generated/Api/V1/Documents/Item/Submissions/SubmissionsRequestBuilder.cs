@@ -65,7 +65,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsGetResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a signing submission. Each signer entry maps to a signer role. Use the `prefill` field to pre-fill specific document fields for a signer.
+        /// Creates a signing submission. Each signer entry maps to a signer role. Use the `prefill` field to pre-fill specific document fields for a signer. Prefill keys can be field UUIDs or field labels (resolved per signer role). The `readonlyFieldIds` field also accepts labels.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -104,7 +104,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions
             return requestInfo;
         }
         /// <summary>
-        /// Creates a signing submission. Each signer entry maps to a signer role. Use the `prefill` field to pre-fill specific document fields for a signer.
+        /// Creates a signing submission. Each signer entry maps to a signer role. Use the `prefill` field to pre-fill specific document fields for a signer. Prefill keys can be field UUIDs or field labels (resolved per signer role). The `readonlyFieldIds` field also accepts labels.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
