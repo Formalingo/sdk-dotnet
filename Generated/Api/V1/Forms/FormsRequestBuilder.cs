@@ -35,7 +35,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FormsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v1/forms{?limit*,page*,status*}", pathParameters)
+        public FormsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v1/forms{?limit*,maxSent*,maxSubmissions*,minSent*,minSubmissions*,order*,page*,sort*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public FormsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v1/forms{?limit*,page*,status*}", rawUrl)
+        public FormsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/api/v1/forms{?limit*,maxSent*,maxSubmissions*,minSent*,minSubmissions*,order*,page*,sort*,status*}", rawUrl)
         {
         }
         /// <summary>
@@ -154,8 +154,24 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms
         {
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            [QueryParameter("maxSent")]
+            public int? MaxSent { get; set; }
+            [QueryParameter("maxSubmissions")]
+            public int? MaxSubmissions { get; set; }
+            /// <summary>Only forms with at least this many recipients</summary>
+            [QueryParameter("minSent")]
+            public int? MinSent { get; set; }
+            /// <summary>Only forms with at least this many completed submissions</summary>
+            [QueryParameter("minSubmissions")]
+            public int? MinSubmissions { get; set; }
+            /// <summary>Sort direction (default: desc)</summary>
+            [QueryParameter("order")]
+            public global::Formalingo.Sdk.Generated.Api.V1.Forms.GetOrderQueryParameterType? Order { get; set; }
             [QueryParameter("page")]
             public int? Page { get; set; }
+            /// <summary>Sort key (default: updated)</summary>
+            [QueryParameter("sort")]
+            public global::Formalingo.Sdk.Generated.Api.V1.Forms.GetSortQueryParameterType? Sort { get; set; }
             [QueryParameter("status")]
             public global::Formalingo.Sdk.Generated.Api.V1.Forms.GetStatusQueryParameterType? Status { get; set; }
         }

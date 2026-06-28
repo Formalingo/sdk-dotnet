@@ -46,6 +46,8 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>The question_count property</summary>
         public double? QuestionCount { get; set; }
+        /// <summary>Total recipients (links/invites) for the form</summary>
+        public double? SentCount { get; set; }
         /// <summary>The settings property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +58,8 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>The status property</summary>
         public global::Formalingo.Sdk.Generated.Models.Form_status? Status { get; set; }
+        /// <summary>Recipients who have completed the form</summary>
+        public double? SubmissionCount { get; set; }
         /// <summary>The title property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -100,8 +104,10 @@ namespace Formalingo.Sdk.Generated.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "publicToken", n => { PublicToken = n.GetStringValue(); } },
                 { "question_count", n => { QuestionCount = n.GetDoubleValue(); } },
+                { "sent_count", n => { SentCount = n.GetDoubleValue(); } },
                 { "settings", n => { Settings = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.Form_settings>(global::Formalingo.Sdk.Generated.Models.Form_settings.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.Form_status>(); } },
+                { "submission_count", n => { SubmissionCount = n.GetDoubleValue(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "workspaceId", n => { WorkspaceId = n.GetGuidValue(); } },
@@ -121,8 +127,10 @@ namespace Formalingo.Sdk.Generated.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("publicToken", PublicToken);
             writer.WriteDoubleValue("question_count", QuestionCount);
+            writer.WriteDoubleValue("sent_count", SentCount);
             writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.Form_settings>("settings", Settings);
             writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.Form_status>("status", Status);
+            writer.WriteDoubleValue("submission_count", SubmissionCount);
             writer.WriteStringValue("title", Title);
             writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
             writer.WriteGuidValue("workspaceId", WorkspaceId);

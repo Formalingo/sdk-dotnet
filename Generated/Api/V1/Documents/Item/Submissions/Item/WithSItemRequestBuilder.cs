@@ -63,6 +63,29 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithSDeleteResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithSDeleteResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Get a submission status
+        /// </summary>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithSGetResponse"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithS404Error">When receiving a 404 status code</exception>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithSGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithSGetResponse> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithS404Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithSGetResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.WithSGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Delete a submission
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -77,6 +100,25 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item
         {
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
+        /// Get a submission status
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
