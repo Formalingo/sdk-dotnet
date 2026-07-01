@@ -22,7 +22,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public List<global::Formalingo.Sdk.Generated.Models.SignerInput> Signers { get; set; }
 #endif
-        /// <summary>If true, suppresses signer_invite notifications for all signers in this submission.</summary>
+        /// <summary>Suppresses signer_invite notifications for all signers in this submission. Defaults to true; set false to send notifications.</summary>
         public bool? SuppressNotifications { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody"/> and sets the default values.

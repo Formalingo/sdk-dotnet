@@ -52,7 +52,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>The options property</summary>
+        /// <summary>Type-specific options. For calculation fields, use { formula: &quot;{{Field A}} {{Field B}}&quot;, result_type: &quot;text&quot; | &quot;number&quot; }.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Formalingo.Sdk.Generated.Models.DocumentField_options? Options { get; set; }

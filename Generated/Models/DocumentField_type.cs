@@ -64,5 +64,9 @@ namespace Formalingo.Sdk.Generated.Models
         #pragma warning disable CS1591
         Initials,
         #pragma warning restore CS1591
+        [EnumMember(Value = "calculation")]
+        #pragma warning disable CS1591
+        Calculation,
+        #pragma warning restore CS1591
     }
 }

@@ -48,7 +48,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Phone { get; set; }
 #endif
-        /// <summary>Map of question ID → pre-filled value. The value is saved as a Response.</summary>
+        /// <summary>Map of question ID or exact question text → pre-filled value. The value is saved as a Response.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Formalingo.Sdk.Generated.Models.CreateRecipientBody_prefill? Prefill { get; set; }

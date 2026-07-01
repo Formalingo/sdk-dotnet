@@ -46,7 +46,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>The options property</summary>
+        /// <summary>Type-specific options. Calculation fields require formula and accept result_type (&quot;text&quot; or &quot;number&quot;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutRequestBody_options? Options { get; set; }

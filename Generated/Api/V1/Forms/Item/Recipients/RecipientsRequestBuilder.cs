@@ -71,7 +71,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.RecipientsGetResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.RecipientsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates a form recipient with an optional pre-fill map. The `prefill` field accepts `{ questionId: value }` pairs that are saved as Response records immediately.
+        /// Creates a form recipient with an optional pre-fill map. The `prefill` field accepts question IDs or exact question text as keys; resolved values are saved as Response records immediately.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.RecipientsPostResponse"/></returns>
         /// <param name="body">The request body</param>
@@ -110,7 +110,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients
             return requestInfo;
         }
         /// <summary>
-        /// Creates a form recipient with an optional pre-fill map. The `prefill` field accepts `{ questionId: value }` pairs that are saved as Response records immediately.
+        /// Creates a form recipient with an optional pre-fill map. The `prefill` field accepts question IDs or exact question text as keys; resolved values are saved as Response records immediately.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

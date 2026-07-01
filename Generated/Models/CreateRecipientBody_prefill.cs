@@ -8,7 +8,7 @@ using System;
 namespace Formalingo.Sdk.Generated.Models
 {
     /// <summary>
-    /// Map of question ID → pre-filled value. The value is saved as a Response.
+    /// Map of question ID or exact question text → pre-filled value. The value is saved as a Response.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class CreateRecipientBody_prefill : IAdditionalDataHolder, IParsable

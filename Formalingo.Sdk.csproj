@@ -7,7 +7,7 @@
     <RootNamespace>Formalingo.Sdk</RootNamespace>
 
     <PackageId>Formalingo.Sdk</PackageId>
-    <Version>0.1.2</Version>
+    <Version>0.1.3</Version>
     <Authors>Formalingo</Authors>
     <Description>Official .NET SDK for the Formalingo API</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
