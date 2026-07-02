@@ -34,7 +34,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Files.Item.Download
         {
         }
         /// <summary>
-        /// Returns a short-lived signed URL for a response upload or signed PDF file. Requires the submissions:download_files permission.
+        /// Returns a short-lived signed URL for a response upload or signed PDF file. Permission is file-kind specific: response uploads require submissions:download_files; signed PDFs require submissions:download_pdf.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.FileDownloadResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -61,7 +61,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Files.Item.Download
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Models.FileDownloadResponse>(requestInfo, global::Formalingo.Sdk.Generated.Models.FileDownloadResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a short-lived signed URL for a response upload or signed PDF file. Requires the submissions:download_files permission.
+        /// Returns a short-lived signed URL for a response upload or signed PDF file. Permission is file-kind specific: response uploads require submissions:download_files; signed PDFs require submissions:download_pdf.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
