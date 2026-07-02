@@ -9,41 +9,37 @@ namespace Formalingo.Sdk.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class RecipientResponse : IAdditionalDataHolder, IParsable
+    public partial class FileDownloadResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The answeredAt property</summary>
-        public DateTimeOffset? AnsweredAt { get; set; }
-        /// <summary>The questionId property</summary>
-        public Guid? QuestionId { get; set; }
-        /// <summary>The updatedAt property</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>Response value. File upload answers may use the FileValue schema for descriptor-style downloads.</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Value { get; set; }
+        public global::Formalingo.Sdk.Generated.Models.FileDownload? Data { get; set; }
 #nullable restore
 #else
-        public UntypedNode Value { get; set; }
+        public global::Formalingo.Sdk.Generated.Models.FileDownload Data { get; set; }
 #endif
+        /// <summary>The success property</summary>
+        public bool? Success { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.RecipientResponse"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.FileDownloadResponse"/> and sets the default values.
         /// </summary>
-        public RecipientResponse()
+        public FileDownloadResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.RecipientResponse"/></returns>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.FileDownloadResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Formalingo.Sdk.Generated.Models.RecipientResponse CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Formalingo.Sdk.Generated.Models.FileDownloadResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Formalingo.Sdk.Generated.Models.RecipientResponse();
+            return new global::Formalingo.Sdk.Generated.Models.FileDownloadResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,10 +49,8 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "answeredAt", n => { AnsweredAt = n.GetDateTimeOffsetValue(); } },
-                { "questionId", n => { QuestionId = n.GetGuidValue(); } },
-                { "updatedAt", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "value", n => { Value = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.FileDownload>(global::Formalingo.Sdk.Generated.Models.FileDownload.CreateFromDiscriminatorValue); } },
+                { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -66,10 +60,8 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("answeredAt", AnsweredAt);
-            writer.WriteGuidValue("questionId", QuestionId);
-            writer.WriteDateTimeOffsetValue("updatedAt", UpdatedAt);
-            writer.WriteObjectValue<UntypedNode>("value", Value);
+            writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.FileDownload>("data", Data);
+            writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

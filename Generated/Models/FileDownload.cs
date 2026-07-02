@@ -9,14 +9,20 @@ namespace Formalingo.Sdk.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class SubmissionPdf : IAdditionalDataHolder, IParsable
+    public partial class FileDownload : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The completedAt property</summary>
-        public DateTimeOffset? CompletedAt { get; set; }
-        /// <summary>Presigned download URL. Expires in 5 minutes.</summary>
+        /// <summary>The contentType property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ContentType { get; set; }
+#nullable restore
+#else
+        public string ContentType { get; set; }
+#endif
+        /// <summary>Temporary Supabase signed URL</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DownloadUrl { get; set; }
@@ -24,34 +30,36 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string DownloadUrl { get; set; }
 #endif
-        /// <summary>URL expiry in seconds</summary>
-        public double? ExpiresIn { get; set; }
-        /// <summary>The file property</summary>
+        /// <summary>The expiresIn property</summary>
+        public int? ExpiresIn { get; set; }
+        /// <summary>The fileId property</summary>
+        public Guid? FileId { get; set; }
+        /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Formalingo.Sdk.Generated.Models.FileDescriptor? File { get; set; }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public global::Formalingo.Sdk.Generated.Models.FileDescriptor File { get; set; }
+        public string Name { get; set; }
 #endif
-        /// <summary>The submissionId property</summary>
-        public Guid? SubmissionId { get; set; }
+        /// <summary>The sizeBytes property</summary>
+        public int? SizeBytes { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.SubmissionPdf"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.FileDownload"/> and sets the default values.
         /// </summary>
-        public SubmissionPdf()
+        public FileDownload()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.SubmissionPdf"/></returns>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.FileDownload"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Formalingo.Sdk.Generated.Models.SubmissionPdf CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Formalingo.Sdk.Generated.Models.FileDownload CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Formalingo.Sdk.Generated.Models.SubmissionPdf();
+            return new global::Formalingo.Sdk.Generated.Models.FileDownload();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -61,11 +69,12 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "completedAt", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
+                { "contentType", n => { ContentType = n.GetStringValue(); } },
                 { "downloadUrl", n => { DownloadUrl = n.GetStringValue(); } },
-                { "expiresIn", n => { ExpiresIn = n.GetDoubleValue(); } },
-                { "file", n => { File = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.FileDescriptor>(global::Formalingo.Sdk.Generated.Models.FileDescriptor.CreateFromDiscriminatorValue); } },
-                { "submissionId", n => { SubmissionId = n.GetGuidValue(); } },
+                { "expiresIn", n => { ExpiresIn = n.GetIntValue(); } },
+                { "fileId", n => { FileId = n.GetGuidValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "sizeBytes", n => { SizeBytes = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -75,11 +84,12 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("completedAt", CompletedAt);
+            writer.WriteStringValue("contentType", ContentType);
             writer.WriteStringValue("downloadUrl", DownloadUrl);
-            writer.WriteDoubleValue("expiresIn", ExpiresIn);
-            writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.FileDescriptor>("file", File);
-            writer.WriteGuidValue("submissionId", SubmissionId);
+            writer.WriteIntValue("expiresIn", ExpiresIn);
+            writer.WriteGuidValue("fileId", FileId);
+            writer.WriteStringValue("name", Name);
+            writer.WriteIntValue("sizeBytes", SizeBytes);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -3,6 +3,7 @@
 using Formalingo.Sdk.Generated.Api.V1.Analytics;
 using Formalingo.Sdk.Generated.Api.V1.Deliveries;
 using Formalingo.Sdk.Generated.Api.V1.Documents;
+using Formalingo.Sdk.Generated.Api.V1.Files;
 using Formalingo.Sdk.Generated.Api.V1.Forms;
 using Formalingo.Sdk.Generated.Api.V1.Integrations;
 using Formalingo.Sdk.Generated.Api.V1.Quota;
@@ -34,6 +35,11 @@ namespace Formalingo.Sdk.Generated.Api.V1
         public global::Formalingo.Sdk.Generated.Api.V1.Documents.DocumentsRequestBuilder Documents
         {
             get => new global::Formalingo.Sdk.Generated.Api.V1.Documents.DocumentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The files property</summary>
+        public global::Formalingo.Sdk.Generated.Api.V1.Files.FilesRequestBuilder Files
+        {
+            get => new global::Formalingo.Sdk.Generated.Api.V1.Files.FilesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The forms property</summary>
         public global::Formalingo.Sdk.Generated.Api.V1.Forms.FormsRequestBuilder Forms

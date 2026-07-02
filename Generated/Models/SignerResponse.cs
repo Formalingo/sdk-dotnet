@@ -20,7 +20,7 @@ namespace Formalingo.Sdk.Generated.Models
         public Guid? FieldId { get; set; }
         /// <summary>The updatedAt property</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
-        /// <summary>The value property</summary>
+        /// <summary>Response value. File upload answers may use the FileValue schema for descriptor-style downloads.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public UntypedNode? Value { get; set; }
