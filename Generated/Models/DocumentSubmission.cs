@@ -16,7 +16,7 @@ namespace Formalingo.Sdk.Generated.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The completedAt property</summary>
         public DateTimeOffset? CompletedAt { get; set; }
-        /// <summary>The completedPdfUrl property</summary>
+        /// <summary>Deprecated compatibility alias. For completed submissions this points to Formalingo&apos;s API-key-gated signed PDF descriptor endpoint, not raw storage. Prefer signedPdf.downloadUrl.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CompletedPdfUrl { get; set; }
@@ -30,6 +30,14 @@ namespace Formalingo.Sdk.Generated.Models
         public Guid? DocumentId { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; set; }
+        /// <summary>Stable API-key-gated file descriptor for the completed signed PDF.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Formalingo.Sdk.Generated.Models.DocumentSubmission_signedPdf? SignedPdf { get; set; }
+#nullable restore
+#else
+        public global::Formalingo.Sdk.Generated.Models.DocumentSubmission_signedPdf SignedPdf { get; set; }
+#endif
         /// <summary>The signers property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -70,6 +78,7 @@ namespace Formalingo.Sdk.Generated.Models
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "documentId", n => { DocumentId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
+                { "signedPdf", n => { SignedPdf = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.DocumentSubmission_signedPdf>(global::Formalingo.Sdk.Generated.Models.DocumentSubmission_signedPdf.CreateFromDiscriminatorValue); } },
                 { "signers", n => { Signers = n.GetCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.Signer>(global::Formalingo.Sdk.Generated.Models.Signer.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.DocumentSubmission_status>(); } },
             };
@@ -86,6 +95,7 @@ namespace Formalingo.Sdk.Generated.Models
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
             writer.WriteGuidValue("documentId", DocumentId);
             writer.WriteGuidValue("id", Id);
+            writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.DocumentSubmission_signedPdf>("signedPdf", SignedPdf);
             writer.WriteCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.Signer>("signers", Signers);
             writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.DocumentSubmission_status>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
