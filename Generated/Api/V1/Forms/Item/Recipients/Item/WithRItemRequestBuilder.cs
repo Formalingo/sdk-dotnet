@@ -64,6 +64,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Item
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Models.PhoneValidationError">When receiving a 400 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Item.WithRPutResponse?> PutAsync(global::Formalingo.Sdk.Generated.Models.UpdateRecipientBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -75,7 +76,11 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Item.WithRPutResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Item.WithRPutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Formalingo.Sdk.Generated.Models.PhoneValidationError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Item.WithRPutResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Item.WithRPutResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete a recipient

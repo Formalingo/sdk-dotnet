@@ -64,6 +64,14 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>The order property</summary>
         public double? Order { get; set; }
+        /// <summary>Responses are canonical E.164 phone values stored after successful creates and edits.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Phone { get; set; }
+#nullable restore
+#else
+        public string Phone { get; set; }
+#endif
         /// <summary>The role property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -119,6 +127,7 @@ namespace Formalingo.Sdk.Generated.Models
                 { "link", n => { Link = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "order", n => { Order = n.GetDoubleValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
                 { "role", n => { Role = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.Signer_status>(); } },
                 { "submissionId", n => { SubmissionId = n.GetGuidValue(); } },
@@ -142,6 +151,7 @@ namespace Formalingo.Sdk.Generated.Models
             writer.WriteStringValue("link", Link);
             writer.WriteStringValue("name", Name);
             writer.WriteDoubleValue("order", Order);
+            writer.WriteStringValue("phone", Phone);
             writer.WriteStringValue("role", Role);
             writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.Signer_status>("status", Status);
             writer.WriteGuidValue("submissionId", SubmissionId);

@@ -71,6 +71,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Models.PhoneValidationError">When receiving a 400 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse?> PostAsync(global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -82,7 +83,11 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Formalingo.Sdk.Generated.Models.PhoneValidationError.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List submissions

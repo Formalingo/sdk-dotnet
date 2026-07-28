@@ -5,11 +5,11 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item
+namespace Formalingo.Sdk.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class WithSignerPutRequestBody : IAdditionalDataHolder, IParsable
+    public partial class UpdateSignerBody : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -40,22 +40,30 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Accepted formatted input. International input may include spaces, parentheses, and hyphens, but must include `+`. National input uses the workspace default phone country.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Phone { get; set; }
+#nullable restore
+#else
+        public string Phone { get; set; }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.WithSignerPutRequestBody"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.UpdateSignerBody"/> and sets the default values.
         /// </summary>
-        public WithSignerPutRequestBody()
+        public UpdateSignerBody()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.WithSignerPutRequestBody"/></returns>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.UpdateSignerBody"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.WithSignerPutRequestBody CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Formalingo.Sdk.Generated.Models.UpdateSignerBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.WithSignerPutRequestBody();
+            return new global::Formalingo.Sdk.Generated.Models.UpdateSignerBody();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -69,6 +77,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
                 { "expiresAt", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "phone", n => { Phone = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -82,6 +91,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
             writer.WriteDateTimeOffsetValue("expiresAt", ExpiresAt);
             writer.WriteStringValue("label", Label);
             writer.WriteStringValue("name", Name);
+            writer.WriteStringValue("phone", Phone);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
