@@ -14,7 +14,17 @@ namespace Formalingo.Sdk.Generated.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email property</summary>
+        /// <summary>Set true to clear the stored phone number. Omit to leave it unchanged.</summary>
+        public bool? ClearPhone { get; set; }
+        /// <summary>The color property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Color { get; set; }
+#nullable restore
+#else
+        public string Color { get; set; }
+#endif
+        /// <summary>Email address; null clears it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Email { get; set; }
@@ -22,7 +32,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The expiresAt property</summary>
+        /// <summary>ISO 8601 expiry; null clears it.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,7 +42,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>The name property</summary>
+        /// <summary>Signer name; null clears it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -40,13 +50,31 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Accepted formatted input. International input may include spaces, parentheses, and hyphens, but must include `+`. National input uses the workspace default phone country.</summary>
+        /// <summary>The order property</summary>
+        public int? Order { get; set; }
+        /// <summary>Write-only password; null removes it and it is never returned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Password { get; set; }
+#nullable restore
+#else
+        public string Password { get; set; }
+#endif
+        /// <summary>Accepted formatted phone input; null clears it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
 #nullable restore
 #else
         public string Phone { get; set; }
+#endif
+        /// <summary>The role property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Role { get; set; }
+#nullable restore
+#else
+        public string Role { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.UpdateSignerBody"/> and sets the default values.
@@ -73,11 +101,16 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "clearPhone", n => { ClearPhone = n.GetBoolValue(); } },
+                { "color", n => { Color = n.GetStringValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "expiresAt", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "order", n => { Order = n.GetIntValue(); } },
+                { "password", n => { Password = n.GetStringValue(); } },
                 { "phone", n => { Phone = n.GetStringValue(); } },
+                { "role", n => { Role = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -87,11 +120,16 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("clearPhone", ClearPhone);
+            writer.WriteStringValue("color", Color);
             writer.WriteStringValue("email", Email);
             writer.WriteDateTimeOffsetValue("expiresAt", ExpiresAt);
             writer.WriteStringValue("label", Label);
             writer.WriteStringValue("name", Name);
+            writer.WriteIntValue("order", Order);
+            writer.WriteStringValue("password", Password);
             writer.WriteStringValue("phone", Phone);
+            writer.WriteStringValue("role", Role);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

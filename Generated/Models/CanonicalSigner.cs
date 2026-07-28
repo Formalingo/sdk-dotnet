@@ -9,18 +9,18 @@ namespace Formalingo.Sdk.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class PhoneValidationError : global::Formalingo.Sdk.Generated.Models.ValidationError, IParsable
+    public partial class CanonicalSigner : global::Formalingo.Sdk.Generated.Models.Signer, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.PhoneValidationError"/></returns>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.CanonicalSigner"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new global::Formalingo.Sdk.Generated.Models.PhoneValidationError CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new global::Formalingo.Sdk.Generated.Models.CanonicalSigner CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Formalingo.Sdk.Generated.Models.PhoneValidationError();
+            return new global::Formalingo.Sdk.Generated.Models.CanonicalSigner();
         }
         /// <summary>
         /// The deserialization information for the current model

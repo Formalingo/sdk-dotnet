@@ -18,10 +18,10 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Formalingo.Sdk.Generated.Models.Recipient? Data { get; set; }
+        public global::Formalingo.Sdk.Generated.Models.CanonicalRecipient? Data { get; set; }
 #nullable restore
 #else
-        public global::Formalingo.Sdk.Generated.Models.Recipient Data { get; set; }
+        public global::Formalingo.Sdk.Generated.Models.CanonicalRecipient Data { get; set; }
 #endif
         /// <summary>The success property</summary>
         public bool? Success { get; set; }
@@ -50,7 +50,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.Recipient>(global::Formalingo.Sdk.Generated.Models.Recipient.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.CanonicalRecipient>(global::Formalingo.Sdk.Generated.Models.CanonicalRecipient.CreateFromDiscriminatorValue); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.Recipient>("data", Data);
+            writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.CanonicalRecipient>("data", Data);
             writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }

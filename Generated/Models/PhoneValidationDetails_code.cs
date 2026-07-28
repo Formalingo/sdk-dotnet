@@ -5,7 +5,7 @@ namespace Formalingo.Sdk.Generated.Models
 {
     /// <summary>Stable phone-normalization failure code.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum PhoneValidationError_details_code
+    public enum PhoneValidationDetails_code
     {
         [EnumMember(Value = "missing_default_country")]
         #pragma warning disable CS1591

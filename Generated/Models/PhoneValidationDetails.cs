@@ -9,13 +9,13 @@ namespace Formalingo.Sdk.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class PhoneValidationError_details : IAdditionalDataHolder, IParsable
+    public partial class PhoneValidationDetails : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Stable phone-normalization failure code.</summary>
-        public global::Formalingo.Sdk.Generated.Models.PhoneValidationError_details_code? Code { get; set; }
+        public global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails_code? Code { get; set; }
         /// <summary>The invalid phone field. Indexed signer paths identify the failing signer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -26,24 +26,24 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>Zero-based signer index when a submission signer phone is invalid.</summary>
         public int? Index { get; set; }
-        /// <summary>One-based CSV import row when an imported phone is invalid.</summary>
+        /// <summary>One-based import or bulk-recipient position when a phone is invalid.</summary>
         public int? Row { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.PhoneValidationError_details"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails"/> and sets the default values.
         /// </summary>
-        public PhoneValidationError_details()
+        public PhoneValidationDetails()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.PhoneValidationError_details"/></returns>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Formalingo.Sdk.Generated.Models.PhoneValidationError_details CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Formalingo.Sdk.Generated.Models.PhoneValidationError_details();
+            return new global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -53,7 +53,7 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.PhoneValidationError_details_code>(); } },
+                { "code", n => { Code = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails_code>(); } },
                 { "field", n => { Field = n.GetStringValue(); } },
                 { "index", n => { Index = n.GetIntValue(); } },
                 { "row", n => { Row = n.GetIntValue(); } },
@@ -66,7 +66,7 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.PhoneValidationError_details_code>("code", Code);
+            writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails_code>("code", Code);
             writer.WriteStringValue("field", Field);
             writer.WriteIntValue("index", Index);
             writer.WriteIntValue("row", Row);
