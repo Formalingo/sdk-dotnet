@@ -9,13 +9,11 @@ namespace Formalingo.Sdk.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UpdateSignerBody : IAdditionalDataHolder, IParsable
+    public partial class SignerUpdate : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Set true to clear the stored phone. Omit to leave it unchanged; cannot be combined with a non-null phone.</summary>
-        public bool? ClearPhone { get; set; }
         /// <summary>The color property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -24,6 +22,12 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Color { get; set; }
 #endif
+        /// <summary>The completedAt property</summary>
+        public DateTimeOffset? CompletedAt { get; set; }
+        /// <summary>The createdAt property</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The documentId property</summary>
+        public Guid? DocumentId { get; set; }
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,6 +38,8 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>The expiresAt property</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
+        /// <summary>The id property</summary>
+        public Guid? Id { get; set; }
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -51,16 +57,8 @@ namespace Formalingo.Sdk.Generated.Models
         public string Name { get; set; }
 #endif
         /// <summary>The order property</summary>
-        public int? Order { get; set; }
-        /// <summary>Write-only password; null removes it and it is never returned.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Password { get; set; }
-#nullable restore
-#else
-        public string Password { get; set; }
-#endif
-        /// <summary>Accepted formatted input. International input may include spaces, parentheses, and hyphens, but must include `+`. National input uses the workspace default phone country.</summary>
+        public double? Order { get; set; }
+        /// <summary>Stored phone value; when phone is omitted, an untouched legacy value can be returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
@@ -76,22 +74,26 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Role { get; set; }
 #endif
+        /// <summary>The status property</summary>
+        public global::Formalingo.Sdk.Generated.Models.SignerUpdate_status? Status { get; set; }
+        /// <summary>The submissionId property</summary>
+        public Guid? SubmissionId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.UpdateSignerBody"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.SignerUpdate"/> and sets the default values.
         /// </summary>
-        public UpdateSignerBody()
+        public SignerUpdate()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.UpdateSignerBody"/></returns>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.SignerUpdate"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Formalingo.Sdk.Generated.Models.UpdateSignerBody CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Formalingo.Sdk.Generated.Models.SignerUpdate CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Formalingo.Sdk.Generated.Models.UpdateSignerBody();
+            return new global::Formalingo.Sdk.Generated.Models.SignerUpdate();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,16 +103,20 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "clearPhone", n => { ClearPhone = n.GetBoolValue(); } },
                 { "color", n => { Color = n.GetStringValue(); } },
+                { "completedAt", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
+                { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "documentId", n => { DocumentId = n.GetGuidValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "expiresAt", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
+                { "id", n => { Id = n.GetGuidValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "order", n => { Order = n.GetIntValue(); } },
-                { "password", n => { Password = n.GetStringValue(); } },
+                { "order", n => { Order = n.GetDoubleValue(); } },
                 { "phone", n => { Phone = n.GetStringValue(); } },
                 { "role", n => { Role = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.SignerUpdate_status>(); } },
+                { "submissionId", n => { SubmissionId = n.GetGuidValue(); } },
             };
         }
         /// <summary>
@@ -120,16 +126,20 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteBoolValue("clearPhone", ClearPhone);
             writer.WriteStringValue("color", Color);
+            writer.WriteDateTimeOffsetValue("completedAt", CompletedAt);
+            writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
+            writer.WriteGuidValue("documentId", DocumentId);
             writer.WriteStringValue("email", Email);
             writer.WriteDateTimeOffsetValue("expiresAt", ExpiresAt);
+            writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("label", Label);
             writer.WriteStringValue("name", Name);
-            writer.WriteIntValue("order", Order);
-            writer.WriteStringValue("password", Password);
+            writer.WriteDoubleValue("order", Order);
             writer.WriteStringValue("phone", Phone);
             writer.WriteStringValue("role", Role);
+            writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.SignerUpdate_status>("status", Status);
+            writer.WriteGuidValue("submissionId", SubmissionId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

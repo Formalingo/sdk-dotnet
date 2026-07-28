@@ -14,7 +14,7 @@ namespace Formalingo.Sdk.Generated.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Set true to clear the stored phone number. Omit to leave it unchanged.</summary>
+        /// <summary>Set true to clear the stored phone. Omit to leave it unchanged; cannot be combined with a non-null phone.</summary>
         public bool? ClearPhone { get; set; }
         /// <summary>The email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -36,7 +36,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>The password property</summary>
+        /// <summary>Write-only; null removes the password.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Password { get; set; }
@@ -44,7 +44,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Password { get; set; }
 #endif
-        /// <summary>Accepted formatted phone input (maximum 80 characters). International input may include spaces, parentheses, and hyphens but must include `+`; national input uses the workspace default country.</summary>
+        /// <summary>Accepted formatted input. International input may include spaces, parentheses, and hyphens, but must include `+`. National input uses the workspace default phone country.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }

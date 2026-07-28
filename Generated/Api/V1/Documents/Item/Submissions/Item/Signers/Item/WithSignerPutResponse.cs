@@ -18,10 +18,10 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Formalingo.Sdk.Generated.Models.CanonicalSigner? Data { get; set; }
+        public global::Formalingo.Sdk.Generated.Models.SignerUpdate? Data { get; set; }
 #nullable restore
 #else
-        public global::Formalingo.Sdk.Generated.Models.CanonicalSigner Data { get; set; }
+        public global::Formalingo.Sdk.Generated.Models.SignerUpdate Data { get; set; }
 #endif
         /// <summary>The success property</summary>
         public bool? Success { get; set; }
@@ -50,7 +50,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.CanonicalSigner>(global::Formalingo.Sdk.Generated.Models.CanonicalSigner.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.SignerUpdate>(global::Formalingo.Sdk.Generated.Models.SignerUpdate.CreateFromDiscriminatorValue); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.CanonicalSigner>("data", Data);
+            writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.SignerUpdate>("data", Data);
             writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }
