@@ -24,7 +24,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Email { get; set; }
 #endif
-        /// <summary>The expires_at property</summary>
+        /// <summary>ISO 8601 expiry; null clears it.</summary>
         public DateTimeOffset? ExpiresAt { get; set; }
         /// <summary>The is_active property</summary>
         public bool? IsActive { get; set; }
@@ -44,7 +44,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Password { get; set; }
 #endif
-        /// <summary>Accepted formatted input. International input may include spaces, parentheses, and hyphens, but must include `+`. National input uses the workspace default phone country.</summary>
+        /// <summary>Accepted formatted phone input. International input may include spaces, parentheses, and hyphens, but must include `+`. National input uses the workspace default phone country.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }
