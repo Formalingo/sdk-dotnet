@@ -14,6 +14,8 @@ namespace Formalingo.Sdk.Generated.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Signing experience used by generated links. Defaults to the document signing view.</summary>
+        public global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody_deliveryFormat? DeliveryFormat { get; set; }
         /// <summary>One entry per signer role. Must provide all required roles.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,6 +32,7 @@ namespace Formalingo.Sdk.Generated.Models
         public CreateSubmissionBody()
         {
             AdditionalData = new Dictionary<string, object>();
+            DeliveryFormat = global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody_deliveryFormat.Document;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -49,6 +52,7 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "deliveryFormat", n => { DeliveryFormat = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody_deliveryFormat>(); } },
                 { "signers", n => { Signers = n.GetCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.SignerInput>(global::Formalingo.Sdk.Generated.Models.SignerInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "suppress_notifications", n => { SuppressNotifications = n.GetBoolValue(); } },
             };
@@ -60,6 +64,7 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody_deliveryFormat>("deliveryFormat", DeliveryFormat);
             writer.WriteCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.SignerInput>("signers", Signers);
             writer.WriteBoolValue("suppress_notifications", SuppressNotifications);
             writer.WriteAdditionalData(AdditionalData);
