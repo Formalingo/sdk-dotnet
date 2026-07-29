@@ -18,10 +18,10 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Formalingo.Sdk.Generated.Models.CanonicalRecipient>? Data { get; set; }
+        public List<global::Formalingo.Sdk.Generated.Models.RecipientCreateResult>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Formalingo.Sdk.Generated.Models.CanonicalRecipient> Data { get; set; }
+        public List<global::Formalingo.Sdk.Generated.Models.RecipientCreateResult> Data { get; set; }
 #endif
         /// <summary>The success property</summary>
         public bool? Success { get; set; }
@@ -50,7 +50,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.CanonicalRecipient>(global::Formalingo.Sdk.Generated.Models.CanonicalRecipient.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.RecipientCreateResult>(global::Formalingo.Sdk.Generated.Models.RecipientCreateResult.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
             };
         }
@@ -61,7 +61,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.CanonicalRecipient>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.RecipientCreateResult>("data", Data);
             writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);
         }
