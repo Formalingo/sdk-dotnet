@@ -28,6 +28,8 @@ namespace Formalingo.Sdk.Generated.Models
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The documentId property</summary>
         public Guid? DocumentId { get; set; }
+        /// <summary>Immutable document revision pinned to this submission.</summary>
+        public Guid? DocumentRevisionId { get; set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; set; }
         /// <summary>Stable API-key-gated file descriptor for the completed signed PDF.</summary>
@@ -77,6 +79,7 @@ namespace Formalingo.Sdk.Generated.Models
                 { "completedPdfUrl", n => { CompletedPdfUrl = n.GetStringValue(); } },
                 { "createdAt", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "documentId", n => { DocumentId = n.GetGuidValue(); } },
+                { "documentRevisionId", n => { DocumentRevisionId = n.GetGuidValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "signedPdf", n => { SignedPdf = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.DocumentSubmission_signedPdf>(global::Formalingo.Sdk.Generated.Models.DocumentSubmission_signedPdf.CreateFromDiscriminatorValue); } },
                 { "signers", n => { Signers = n.GetCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.Signer>(global::Formalingo.Sdk.Generated.Models.Signer.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -94,6 +97,7 @@ namespace Formalingo.Sdk.Generated.Models
             writer.WriteStringValue("completedPdfUrl", CompletedPdfUrl);
             writer.WriteDateTimeOffsetValue("createdAt", CreatedAt);
             writer.WriteGuidValue("documentId", DocumentId);
+            writer.WriteGuidValue("documentRevisionId", DocumentRevisionId);
             writer.WriteGuidValue("id", Id);
             writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.DocumentSubmission_signedPdf>("signedPdf", SignedPdf);
             writer.WriteCollectionOfObjectValues<global::Formalingo.Sdk.Generated.Models.Signer>("signers", Signers);

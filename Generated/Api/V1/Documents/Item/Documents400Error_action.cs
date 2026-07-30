@@ -5,12 +5,12 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum DocumentsPutRequestBody_status
+    public enum Documents400Error_action
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "draft")]
+        [EnumMember(Value = "publish_document")]
         #pragma warning disable CS1591
-        Draft,
+        Publish_document,
         #pragma warning restore CS1591
     }
 }

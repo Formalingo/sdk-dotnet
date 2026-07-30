@@ -24,5 +24,9 @@ namespace Formalingo.Sdk.Generated.Models
         #pragma warning disable CS1591
         Expired,
         #pragma warning restore CS1591
+        [EnumMember(Value = "voided")]
+        #pragma warning disable CS1591
+        Voided,
+        #pragma warning restore CS1591
     }
 }

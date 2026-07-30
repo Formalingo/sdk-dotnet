@@ -54,7 +54,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public global::Formalingo.Sdk.Generated.Models.SignerInput_prefill Prefill { get; set; }
 #endif
-        /// <summary>If true, prefilled fields are marked read-only on the document</summary>
+        /// <summary>If true, prefilled fields are marked read-only for this signer only.</summary>
         public bool? PrefillReadonly { get; set; }
         /// <summary>List of field IDs or field labels to mark as read-only for this signer, regardless of the document-level isReadOnly setting. Labels are resolved against fields assigned to this signer&apos;s role. Useful for locking specific fields per-signer at submission time.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
