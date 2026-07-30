@@ -7,16 +7,17 @@ using System.IO;
 using System;
 namespace Formalingo.Sdk.Generated.Models
 {
+    /// <summary>
+    /// Creates a signing submission. The normalized serialized request cannot exceed 1048576 UTF-8 bytes.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class CreateSubmissionBody : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Signing experience used by generated links. Defaults to the document signing view.</summary>
         public global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody_deliveryFormat? DeliveryFormat { get; set; }
-        /// <summary>One entry per signer role. Must provide all required roles.</summary>
+        /// <summary>One entry per signer role. Must provide all required roles. Maximum 100 signers per submission.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::Formalingo.Sdk.Generated.Models.SignerInput>? Signers { get; set; }

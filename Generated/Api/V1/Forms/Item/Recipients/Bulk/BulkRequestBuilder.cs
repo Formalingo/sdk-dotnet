@@ -34,15 +34,17 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk
         {
         }
         /// <summary>
-        /// Creates up to 100 recipients in one request. Requires `recipients:bulk`, and also `recipients:send_notifications` when `sendNotifications` is true.
+        /// Creates up to 100 recipients in one request. Requires `recipients:bulk`, and also `recipients:send_notifications` when `sendNotifications` is true. A caller-owned Idempotency-Key is required; reuse it only with the exact same serialized request body.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.BulkPostResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Formalingo.Sdk.Generated.Models.ValidationError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Models.QuotaExceededError">When receiving a 402 status code</exception>
         /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.Bulk403Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.Bulk404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.Bulk409Error">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.BulkPostResponse?> PostAsync(global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.BulkPostRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -57,13 +59,15 @@ namespace Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
                 { "400", global::Formalingo.Sdk.Generated.Models.ValidationError.CreateFromDiscriminatorValue },
+                { "402", global::Formalingo.Sdk.Generated.Models.QuotaExceededError.CreateFromDiscriminatorValue },
                 { "403", global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.Bulk403Error.CreateFromDiscriminatorValue },
                 { "404", global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.Bulk404Error.CreateFromDiscriminatorValue },
+                { "409", global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.Bulk409Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.BulkPostResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Forms.Item.Recipients.Bulk.BulkPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Creates up to 100 recipients in one request. Requires `recipients:bulk`, and also `recipients:send_notifications` when `sendNotifications` is true.
+        /// Creates up to 100 recipients in one request. Requires `recipients:bulk`, and also `recipients:send_notifications` when `sendNotifications` is true. A caller-owned Idempotency-Key is required; reuse it only with the exact same serialized request body.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

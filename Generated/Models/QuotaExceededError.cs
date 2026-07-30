@@ -6,23 +6,17 @@ using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
 using System;
-namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.ParseJobs
+namespace Formalingo.Sdk.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class StartDocumentParseJobResponse400Error : ApiException, IAdditionalDataHolder, IParsable
+    public partial class QuotaExceededError : ApiException, IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Stable machine-readable error code when available.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Code { get; set; }
-#nullable restore
-#else
-        public string Code { get; set; }
-#endif
+        /// <summary>The requested operation would exceed a workspace plan limit.</summary>
+        public global::Formalingo.Sdk.Generated.Models.QuotaExceededError_code? Code { get; set; }
         /// <summary>The error property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,21 +38,21 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.ParseJobs
         /// <summary>The success property</summary>
         public bool? Success { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.ParseJobs.StartDocumentParseJobResponse400Error"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.QuotaExceededError"/> and sets the default values.
         /// </summary>
-        public StartDocumentParseJobResponse400Error()
+        public QuotaExceededError()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.ParseJobs.StartDocumentParseJobResponse400Error"/></returns>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.QuotaExceededError"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.ParseJobs.StartDocumentParseJobResponse400Error CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Formalingo.Sdk.Generated.Models.QuotaExceededError CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.ParseJobs.StartDocumentParseJobResponse400Error();
+            return new global::Formalingo.Sdk.Generated.Models.QuotaExceededError();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -68,7 +62,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.ParseJobs
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.QuotaExceededError_code>(); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "hint", n => { Hint = n.GetStringValue(); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
@@ -81,7 +75,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.ParseJobs
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("code", Code);
+            writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.QuotaExceededError_code>("code", Code);
             writer.WriteStringValue("error", Error);
             writer.WriteStringValue("hint", Hint);
             writer.WriteBoolValue("success", Success);

@@ -68,7 +68,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions
         /// Creates a signing submission. Each signer entry maps to a signer role. Use the `prefill` field to pre-fill specific document fields for a signer. Prefill keys can be field UUIDs or field labels (resolved per signer role). The `readonlyFieldIds` field also accepts labels. Notifications are suppressed by default; set `suppress_notifications` to false to send signer invites.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.CreateSubmissionResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Creates a signing submission. The normalized serialized request cannot exceed 1048576 UTF-8 bytes.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <exception cref="global::Formalingo.Sdk.Generated.Models.ValidationError">When receiving a 400 status code</exception>
@@ -114,7 +114,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions
         /// Creates a signing submission. Each signer entry maps to a signer role. Use the `prefill` field to pre-fill specific document fields for a signer. Prefill keys can be field UUIDs or field labels (resolved per signer role). The `readonlyFieldIds` field also accepts labels. Notifications are suppressed by default; set `suppress_notifications` to false to send signer invites.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Creates a signing submission. The normalized serialized request cannot exceed 1048576 UTF-8 bytes.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

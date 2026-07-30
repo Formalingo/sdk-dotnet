@@ -8,7 +8,7 @@ using System;
 namespace Formalingo.Sdk.Generated.Models
 {
     /// <summary>
-    /// Map of field identifier → pre-filled value. Keys can be field UUIDs or field labels. Label-based keys are resolved against fields assigned to this signer&apos;s role. If a label matches multiple fields for the same role, the request is rejected with disambiguation details. Creates DocumentResponse records immediately.
+    /// Map of field identifier → pre-filled value. Keys can be field UUIDs or field labels. Label-based keys are resolved against fields assigned to this signer&apos;s role. If a label matches multiple fields for the same role, the request is rejected with disambiguation details. At most 100 fields, 10 nesting levels, and 65536 serialized UTF-8 bytes are accepted per signer. Creates DocumentResponse records immediately.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SignerInput_prefill : IAdditionalDataHolder, IParsable

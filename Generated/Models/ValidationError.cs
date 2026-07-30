@@ -15,6 +15,14 @@ namespace Formalingo.Sdk.Generated.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Stable machine-readable error code when available.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Code { get; set; }
+#nullable restore
+#else
+        public string Code { get; set; }
+#endif
         /// <summary>The details property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,6 +76,7 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "code", n => { Code = n.GetStringValue(); } },
                 { "details", n => { Details = n.GetObjectValue<global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails>(global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails.CreateFromDiscriminatorValue); } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "hint", n => { Hint = n.GetStringValue(); } },
@@ -81,6 +90,7 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("code", Code);
             writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Models.PhoneValidationDetails>("details", Details);
             writer.WriteStringValue("error", Error);
             writer.WriteStringValue("hint", Hint);

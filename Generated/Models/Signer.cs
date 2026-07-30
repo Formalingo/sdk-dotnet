@@ -46,7 +46,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>The link property</summary>
+        /// <summary>Signing link for a live document and signer; null when lifecycle rules withhold access.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Link { get; set; }
@@ -84,7 +84,7 @@ namespace Formalingo.Sdk.Generated.Models
         public global::Formalingo.Sdk.Generated.Models.Signer_status? Status { get; set; }
         /// <summary>The submissionId property</summary>
         public Guid? SubmissionId { get; set; }
-        /// <summary>The token property</summary>
+        /// <summary>Bearer signing token; omitted when the document or signer is no longer live.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Token { get; set; }
