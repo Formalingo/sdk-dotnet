@@ -67,22 +67,29 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions
         /// <summary>
         /// Creates a signing submission. Each signer entry maps to a signer role. Use the `prefill` field to pre-fill specific document fields for a signer. Prefill keys can be field UUIDs or field labels (resolved per signer role). The `readonlyFieldIds` field also accepts labels. Notifications are suppressed by default; set `suppress_notifications` to false to send signer invites.
         /// </summary>
-        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.CreateSubmissionResponse"/></returns>
+        /// <param name="body">Creates a signing submission. The normalized serialized request cannot exceed 1048576 UTF-8 bytes.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Models.ValidationError">When receiving a 400 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.CreateSubmissionResponse409Error">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse?> PostAsync(global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Formalingo.Sdk.Generated.Models.CreateSubmissionResponse?> PostAsync(global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse> PostAsync(global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Formalingo.Sdk.Generated.Models.CreateSubmissionResponse> PostAsync(global::Formalingo.Sdk.Generated.Models.CreateSubmissionBody body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.SubmissionsPostResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Formalingo.Sdk.Generated.Models.ValidationError.CreateFromDiscriminatorValue },
+                { "409", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.CreateSubmissionResponse409Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Models.CreateSubmissionResponse>(requestInfo, global::Formalingo.Sdk.Generated.Models.CreateSubmissionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List submissions
@@ -107,7 +114,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions
         /// Creates a signing submission. Each signer entry maps to a signer role. Use the `prefill` field to pre-fill specific document fields for a signer. Prefill keys can be field UUIDs or field labels (resolved per signer role). The `readonlyFieldIds` field also accepts labels. Notifications are suppressed by default; set `suppress_notifications` to false to send signer invites.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Creates a signing submission. The normalized serialized request cannot exceed 1048576 UTF-8 bytes.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

@@ -12,17 +12,5 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item
         #pragma warning disable CS1591
         Draft,
         #pragma warning restore CS1591
-        [EnumMember(Value = "published")]
-        #pragma warning disable CS1591
-        Published,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "completed")]
-        #pragma warning disable CS1591
-        Completed,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "expired")]
-        #pragma warning disable CS1591
-        Expired,
-        #pragma warning restore CS1591
     }
 }

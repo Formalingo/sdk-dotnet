@@ -54,7 +54,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Link { get; set; }
 #endif
-        /// <summary>The phone property</summary>
+        /// <summary>Stored phone value. Legacy list/get records can retain their pre-normalization stored value until corrected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Phone { get; set; }

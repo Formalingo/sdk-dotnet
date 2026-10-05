@@ -16,6 +16,22 @@ namespace Formalingo.Sdk.Generated.Api.V1.Deliveries
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The attemptedAt property</summary>
         public DateTimeOffset? AttemptedAt { get; set; }
+        /// <summary>The blockedReason property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BlockedReason { get; set; }
+#nullable restore
+#else
+        public string BlockedReason { get; set; }
+#endif
+        /// <summary>The channel property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Channel { get; set; }
+#nullable restore
+#else
+        public string Channel { get; set; }
+#endif
         /// <summary>The eventType property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -34,9 +50,27 @@ namespace Formalingo.Sdk.Generated.Api.V1.Deliveries
 #else
         public global::Formalingo.Sdk.Generated.Api.V1.Deliveries.DeliveriesGetResponse_data_profile Profile { get; set; }
 #endif
+        /// <summary>The providerStatus property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ProviderStatus { get; set; }
+#nullable restore
+#else
+        public string ProviderStatus { get; set; }
+#endif
+        /// <summary>The requestAccepted property</summary>
+        public bool? RequestAccepted { get; set; }
+        /// <summary>The state property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? State { get; set; }
+#nullable restore
+#else
+        public string State { get; set; }
+#endif
         /// <summary>The statusCode property</summary>
         public int? StatusCode { get; set; }
-        /// <summary>The success property</summary>
+        /// <summary>For email and WhatsApp, whether the provider accepted the request. This does not establish inbox delivery; inspect state and providerStatus.</summary>
         public bool? Success { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Api.V1.Deliveries.DeliveriesGetResponse_data"/> and sets the default values.
@@ -64,9 +98,14 @@ namespace Formalingo.Sdk.Generated.Api.V1.Deliveries
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attemptedAt", n => { AttemptedAt = n.GetDateTimeOffsetValue(); } },
+                { "blockedReason", n => { BlockedReason = n.GetStringValue(); } },
+                { "channel", n => { Channel = n.GetStringValue(); } },
                 { "eventType", n => { EventType = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "profile", n => { Profile = n.GetObjectValue<global::Formalingo.Sdk.Generated.Api.V1.Deliveries.DeliveriesGetResponse_data_profile>(global::Formalingo.Sdk.Generated.Api.V1.Deliveries.DeliveriesGetResponse_data_profile.CreateFromDiscriminatorValue); } },
+                { "providerStatus", n => { ProviderStatus = n.GetStringValue(); } },
+                { "requestAccepted", n => { RequestAccepted = n.GetBoolValue(); } },
+                { "state", n => { State = n.GetStringValue(); } },
                 { "statusCode", n => { StatusCode = n.GetIntValue(); } },
                 { "success", n => { Success = n.GetBoolValue(); } },
             };
@@ -79,9 +118,14 @@ namespace Formalingo.Sdk.Generated.Api.V1.Deliveries
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("attemptedAt", AttemptedAt);
+            writer.WriteStringValue("blockedReason", BlockedReason);
+            writer.WriteStringValue("channel", Channel);
             writer.WriteStringValue("eventType", EventType);
             writer.WriteGuidValue("id", Id);
             writer.WriteObjectValue<global::Formalingo.Sdk.Generated.Api.V1.Deliveries.DeliveriesGetResponse_data_profile>("profile", Profile);
+            writer.WriteStringValue("providerStatus", ProviderStatus);
+            writer.WriteBoolValue("requestAccepted", RequestAccepted);
+            writer.WriteStringValue("state", State);
             writer.WriteIntValue("statusCode", StatusCode);
             writer.WriteBoolValue("success", Success);
             writer.WriteAdditionalData(AdditionalData);

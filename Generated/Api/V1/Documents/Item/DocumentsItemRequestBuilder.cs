@@ -7,6 +7,7 @@ using Formalingo.Sdk.Generated.Api.V1.Documents.Item.Publish;
 using Formalingo.Sdk.Generated.Api.V1.Documents.Item.Revisions;
 using Formalingo.Sdk.Generated.Api.V1.Documents.Item.SignerRoles;
 using Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions;
+using Formalingo.Sdk.Generated.Models;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
@@ -111,12 +112,15 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsGetResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a document
+        /// Updates editable document metadata. Snapshot-affecting changes move the document to draft. Publish through the dedicated publish endpoint so an immutable revision is created.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutResponse"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Documents400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Documents404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Models.DocumentNotEditableConflict">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutResponse?> PutAsync(global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutRequestBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -128,7 +132,13 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "400", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Documents400Error.CreateFromDiscriminatorValue },
+                { "404", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Documents404Error.CreateFromDiscriminatorValue },
+                { "409", global::Formalingo.Sdk.Generated.Models.DocumentNotEditableConflict.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Soft-deletes by default. Pass `?permanent=true` to permanently delete.
@@ -169,7 +179,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a document
+        /// Updates editable document metadata. Snapshot-affecting changes move the document to draft. Publish through the dedicated publish endpoint so an immutable revision is created.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

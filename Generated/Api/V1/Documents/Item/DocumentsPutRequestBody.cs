@@ -14,6 +14,8 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The pageCount property</summary>
+        public int? PageCount { get; set; }
         /// <summary>The status property</summary>
         public global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutRequestBody_status? Status { get; set; }
         /// <summary>The title property</summary>
@@ -49,6 +51,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "pageCount", n => { PageCount = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutRequestBody_status>(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
             };
@@ -60,6 +63,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("pageCount", PageCount);
             writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.DocumentsPutRequestBody_status>("status", Status);
             writer.WriteStringValue("title", Title);
             writer.WriteAdditionalData(AdditionalData);
