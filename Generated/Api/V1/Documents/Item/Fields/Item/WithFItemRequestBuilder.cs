@@ -34,11 +34,12 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
         {
         }
         /// <summary>
-        /// Delete a field
+        /// Deletes a field or supporting attachment request from the draft. Existing signing submissions keep their pinned requirements. API keys need documents:write; session/OAuth users must be the document creator for supporting requests.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFDeleteResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithF403Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Formalingo.Sdk.Generated.Models.DocumentNotEditableConflict">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,17 +53,20 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "403", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithF403Error.CreateFromDiscriminatorValue },
                 { "409", global::Formalingo.Sdk.Generated.Models.DocumentNotEditableConflict.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFDeleteResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFDeleteResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a field
+        /// Partially updates a field. Supporting requests can change label, assigneeRole, isRequired and order; purpose, file_upload type, true supporting flag, writable state, null default and zero geometry cannot change. API keys need documents:write; session/OAuth users must be the document creator for supporting requests. Omitted properties are preserved.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Partial field update. Supporting requests allow label, assigned signer, requiredness and order changes; their file_upload type, true supporting flag, writable state, null default and zero geometry must remain unchanged. Field purpose cannot be converted. Omitted properties are preserved.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithF400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithF403Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Formalingo.Sdk.Generated.Models.DocumentNotEditableConflict">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -77,12 +81,14 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
             var requestInfo = ToPutRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
+                { "400", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithF400Error.CreateFromDiscriminatorValue },
+                { "403", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithF403Error.CreateFromDiscriminatorValue },
                 { "409", global::Formalingo.Sdk.Generated.Models.DocumentNotEditableConflict.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete a field
+        /// Deletes a field or supporting attachment request from the draft. Existing signing submissions keep their pinned requirements. API keys need documents:write; session/OAuth users must be the document creator for supporting requests.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -101,10 +107,10 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a field
+        /// Partially updates a field. Supporting requests can change label, assigneeRole, isRequired and order; purpose, file_upload type, true supporting flag, writable state, null default and zero geometry cannot change. API keys need documents:write; session/OAuth users must be the document creator for supporting requests. Omitted properties are preserved.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Partial field update. Supporting requests allow label, assigned signer, requiredness and order changes; their file_upload type, true supporting flag, writable state, null default and zero geometry must remain unchanged. Field purpose cannot be converted. Omitted properties are preserved.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

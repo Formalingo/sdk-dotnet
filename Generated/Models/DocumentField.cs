@@ -52,7 +52,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>Type-specific options. For calculation fields, use { formula: &quot;{{Field A}} {{Field B}}&quot;, result_type: &quot;text&quot; | &quot;number&quot; }.</summary>
+        /// <summary>Type-specific options. A file_upload field with supporting_attachment: true is a supporting attachment request with zero geometry, excluded from the rendered document and signed PDF.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Formalingo.Sdk.Generated.Models.DocumentField_options? Options { get; set; }
@@ -62,7 +62,7 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>The order property</summary>
         public double? Order { get; set; }
-        /// <summary>The pageNumber property</summary>
+        /// <summary>PDF page number, starting at 1. Zero means no PDF-page placement, as used by generated block fields and supporting attachment requests.</summary>
         public int? PageNumber { get; set; }
         /// <summary>The type property</summary>
         public global::Formalingo.Sdk.Generated.Models.DocumentField_type? Type { get; set; }

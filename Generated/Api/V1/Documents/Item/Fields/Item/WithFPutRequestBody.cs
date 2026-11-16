@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
 {
+    /// <summary>
+    /// Partial field update. Supporting requests allow label, assigned signer, requiredness and order changes; their file_upload type, true supporting flag, writable state, null default and zero geometry must remain unchanged. Field purpose cannot be converted. Omitted properties are preserved.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class WithFPutRequestBody : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -32,11 +33,11 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
 #endif
         /// <summary>The direction property</summary>
         public global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutRequestBody_direction? Direction { get; set; }
-        /// <summary>The height property</summary>
+        /// <summary>Required and positive for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public double? Height { get; set; }
-        /// <summary>The isReadOnly property</summary>
+        /// <summary>Supporting attachment requests must remain writable.</summary>
         public bool? IsReadOnly { get; set; }
-        /// <summary>The isRequired property</summary>
+        /// <summary>Defaults to true for supporting attachment requests and false for ordinary placed fields.</summary>
         public bool? IsRequired { get; set; }
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,7 +47,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>Type-specific options. Calculation fields require formula and accept result_type (&quot;text&quot; or &quot;number&quot;).</summary>
+        /// <summary>Type-specific options, including additional options supported by the field type. For calculation fields, use formula and result_type (text or number).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutRequestBody_options? Options { get; set; }
@@ -54,17 +55,17 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
 #else
         public global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutRequestBody_options Options { get; set; }
 #endif
-        /// <summary>The order property</summary>
+        /// <summary>Field order. For supporting attachment requests, the value must be between 0 and 1,000,000 inclusive.</summary>
         public int? Order { get; set; }
-        /// <summary>The pageNumber property</summary>
+        /// <summary>Required and at least 1 for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public int? PageNumber { get; set; }
         /// <summary>The type property</summary>
         public global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutRequestBody_type? Type { get; set; }
-        /// <summary>The width property</summary>
+        /// <summary>Required and positive for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public double? Width { get; set; }
-        /// <summary>The x property</summary>
+        /// <summary>Required for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public double? X { get; set; }
-        /// <summary>The y property</summary>
+        /// <summary>Required for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public double? Y { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutRequestBody"/> and sets the default values.
@@ -72,7 +73,6 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item
         public WithFPutRequestBody()
         {
             AdditionalData = new Dictionary<string, object>();
-            Direction = global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Item.WithFPutRequestBody_direction.Auto;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

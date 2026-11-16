@@ -47,7 +47,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields
         {
         }
         /// <summary>
-        /// List fields
+        /// Lists placed and non-positioned document fields. Page zero means no PDF-page placement. Workspace API keys with documents:read can read supporting request definitions without file-download permission. Session/OAuth access to those definitions requires the document creator. Actual uploaded values and downloads require separate authorization.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.FieldsGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,13 +65,15 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.FieldsGetResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.FieldsGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a field
+        /// Creates a placed field or supporting attachment request. For a supporting request, use type=file_upload, options.supporting_attachment=true and a valid assigneeRole; geometry may be omitted or all zero, and isRequired defaults to true. API keys need documents:write; session/OAuth users must be the document creator. File-download permission is not needed to author requests. Optional client id UUID supports identical retry replay; field purpose is immutable.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.FieldsPostResponse"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Create a placed field or a supporting file_upload request. Supporting requests require options.supporting_attachment=true and an assigned signer; omitted geometry is canonicalized to all zero and Required defaults to true. Ordinary fields require complete page placement. Field purpose is immutable after creation.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="global::Formalingo.Sdk.Generated.Models.DocumentNotEditableConflict">When receiving a 409 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Fields400Error">When receiving a 400 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Fields403Error">When receiving a 403 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Fields409Error">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.FieldsPostResponse?> PostAsync(global::Formalingo.Sdk.Generated.Models.CreateFieldBody body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -85,12 +87,14 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "409", global::Formalingo.Sdk.Generated.Models.DocumentNotEditableConflict.CreateFromDiscriminatorValue },
+                { "400", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Fields400Error.CreateFromDiscriminatorValue },
+                { "403", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Fields403Error.CreateFromDiscriminatorValue },
+                { "409", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.Fields409Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.FieldsPostResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields.FieldsPostResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// List fields
+        /// Lists placed and non-positioned document fields. Page zero means no PDF-page placement. Workspace API keys with documents:read can read supporting request definitions without file-download permission. Session/OAuth access to those definitions requires the document creator. Actual uploaded values and downloads require separate authorization.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -109,10 +113,10 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Fields
             return requestInfo;
         }
         /// <summary>
-        /// Create a field
+        /// Creates a placed field or supporting attachment request. For a supporting request, use type=file_upload, options.supporting_attachment=true and a valid assigneeRole; geometry may be omitted or all zero, and isRequired defaults to true. API keys need documents:write; session/OAuth users must be the document creator. File-download permission is not needed to author requests. Optional client id UUID supports identical retry replay; field purpose is immutable.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
+        /// <param name="body">Create a placed field or a supporting file_upload request. Supporting requests require options.supporting_attachment=true and an assigned signer; omitted geometry is canonicalized to all zero and Required defaults to true. Ordinary fields require complete page placement. Field purpose is immutable after creation.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

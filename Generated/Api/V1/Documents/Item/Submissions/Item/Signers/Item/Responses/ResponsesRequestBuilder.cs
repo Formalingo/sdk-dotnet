@@ -34,11 +34,12 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
         {
         }
         /// <summary>
-        /// Returns all saved field responses for this signer.
+        /// Returns saved responses classified from immutable submission metadata. Supporting upload responses are included for the document creator or a workspace API key with submissions:download_files, and omitted for other clients. Uploaded values use the existing authenticated file-descriptor download flow.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.ResponsesGetResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.Responses409Error">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.ResponsesGetResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +50,11 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.ResponsesGetResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.ResponsesGetResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "409", global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.Responses409Error.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.ResponsesGetResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.ResponsesGetResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update field values for a signer. Returns 409 if any field’s assigned signer has already completed signing.
@@ -77,7 +82,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signer
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.ResponsesPatchResponse>(requestInfo, global::Formalingo.Sdk.Generated.Api.V1.Documents.Item.Submissions.Item.Signers.Item.Responses.ResponsesPatchResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns all saved field responses for this signer.
+        /// Returns saved responses classified from immutable submission metadata. Supporting upload responses are included for the document creator or a workspace API key with submissions:download_files, and omitted for other clients. Uploaded values use the existing authenticated file-descriptor download flow.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

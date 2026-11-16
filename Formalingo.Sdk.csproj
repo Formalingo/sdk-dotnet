@@ -22,5 +22,6 @@
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="" />
+    <Compile Remove="tests/**/*.cs" />
   </ItemGroup>
 </Project>

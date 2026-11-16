@@ -8,13 +8,15 @@ using System;
 namespace Formalingo.Sdk.Generated.Models
 {
     /// <summary>
-    /// Type-specific options. For calculation fields, use { formula: &quot;{{Field A}} {{Field B}}&quot;, result_type: &quot;text&quot; | &quot;number&quot; }.
+    /// Type-specific options. A file_upload field with supporting_attachment: true is a supporting attachment request with zero geometry, excluded from the rendered document and signed PDF.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DocumentField_options : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Set true for a supporting upload request excluded from the document and signed PDF. Only file_upload supports this flag; false and changing the field purpose after creation are rejected.</summary>
+        public bool? SupportingAttachment { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.DocumentField_options"/> and sets the default values.
         /// </summary>
@@ -40,6 +42,7 @@ namespace Formalingo.Sdk.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "supporting_attachment", n => { SupportingAttachment = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -49,6 +52,7 @@ namespace Formalingo.Sdk.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteBoolValue("supporting_attachment", SupportingAttachment);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

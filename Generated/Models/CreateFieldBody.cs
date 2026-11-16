@@ -7,10 +7,11 @@ using System.IO;
 using System;
 namespace Formalingo.Sdk.Generated.Models
 {
+    /// <summary>
+    /// Create a placed field or a supporting file_upload request. Supporting requests require options.supporting_attachment=true and an assigned signer; omitted geometry is canonicalized to all zero and Required defaults to true. Ordinary fields require complete page placement. Field purpose is immutable after creation.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
     public partial class CreateFieldBody : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -32,11 +33,13 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>The direction property</summary>
         public global::Formalingo.Sdk.Generated.Models.CreateFieldBody_direction? Direction { get; set; }
-        /// <summary>The height property</summary>
+        /// <summary>Required and positive for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public double? Height { get; set; }
-        /// <summary>The isReadOnly property</summary>
+        /// <summary>Optional client UUID for retry-safe supporting attachment creation. Reusing the same UUID and request returns the original field; conflicting reuse returns 409. Not supported for placed fields.</summary>
+        public Guid? Id { get; set; }
+        /// <summary>Supporting attachment requests must remain writable.</summary>
         public bool? IsReadOnly { get; set; }
-        /// <summary>The isRequired property</summary>
+        /// <summary>Defaults to true for supporting attachment requests and false for ordinary placed fields.</summary>
         public bool? IsRequired { get; set; }
         /// <summary>The label property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -46,7 +49,7 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public string Label { get; set; }
 #endif
-        /// <summary>Type-specific options. Calculation fields require formula and accept result_type (&quot;text&quot; or &quot;number&quot;).</summary>
+        /// <summary>Type-specific options, including additional options supported by the field type. For calculation fields, use formula and result_type (text or number).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Formalingo.Sdk.Generated.Models.CreateFieldBody_options? Options { get; set; }
@@ -54,17 +57,17 @@ namespace Formalingo.Sdk.Generated.Models
 #else
         public global::Formalingo.Sdk.Generated.Models.CreateFieldBody_options Options { get; set; }
 #endif
-        /// <summary>The order property</summary>
+        /// <summary>Field order. For supporting attachment requests, the value must be between 0 and 1,000,000 inclusive.</summary>
         public int? Order { get; set; }
-        /// <summary>The pageNumber property</summary>
+        /// <summary>Required and at least 1 for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public int? PageNumber { get; set; }
         /// <summary>The type property</summary>
         public global::Formalingo.Sdk.Generated.Models.CreateFieldBody_type? Type { get; set; }
-        /// <summary>The width property</summary>
+        /// <summary>Required and positive for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public double? Width { get; set; }
-        /// <summary>The x property</summary>
+        /// <summary>Required for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public double? X { get; set; }
-        /// <summary>The y property</summary>
+        /// <summary>Required for placed fields. Omit or use 0 for a supporting attachment request.</summary>
         public double? Y { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Formalingo.Sdk.Generated.Models.CreateFieldBody"/> and sets the default values.
@@ -96,6 +99,7 @@ namespace Formalingo.Sdk.Generated.Models
                 { "defaultValue", n => { DefaultValue = n.GetStringValue(); } },
                 { "direction", n => { Direction = n.GetEnumValue<global::Formalingo.Sdk.Generated.Models.CreateFieldBody_direction>(); } },
                 { "height", n => { Height = n.GetDoubleValue(); } },
+                { "id", n => { Id = n.GetGuidValue(); } },
                 { "isReadOnly", n => { IsReadOnly = n.GetBoolValue(); } },
                 { "isRequired", n => { IsRequired = n.GetBoolValue(); } },
                 { "label", n => { Label = n.GetStringValue(); } },
@@ -119,6 +123,7 @@ namespace Formalingo.Sdk.Generated.Models
             writer.WriteStringValue("defaultValue", DefaultValue);
             writer.WriteEnumValue<global::Formalingo.Sdk.Generated.Models.CreateFieldBody_direction>("direction", Direction);
             writer.WriteDoubleValue("height", Height);
+            writer.WriteGuidValue("id", Id);
             writer.WriteBoolValue("isReadOnly", IsReadOnly);
             writer.WriteBoolValue("isRequired", IsRequired);
             writer.WriteStringValue("label", Label);

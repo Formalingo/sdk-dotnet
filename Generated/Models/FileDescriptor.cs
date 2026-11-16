@@ -26,7 +26,7 @@ namespace Formalingo.Sdk.Generated.Models
 #endif
         /// <summary>The downloadMethod property</summary>
         public global::Formalingo.Sdk.Generated.Models.FileDescriptor_downloadMethod? DownloadMethod { get; set; }
-        /// <summary>Formalingo API endpoint that requires Authorization: Bearer &lt;api-key&gt;</summary>
+        /// <summary>Formalingo API endpoint requiring Authorization: Bearer &lt;api-key&gt;. Request it to receive JSON with a temporary storage URL, then fetch that URL for the bytes. Response uploads, including supporting files, require submissions:download_files; signed PDFs require submissions:download_pdf.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? DownloadUrl { get; set; }

@@ -34,7 +34,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Files.Item.Download
         {
         }
         /// <summary>
-        /// Returns a short-lived signed URL for a response upload or signed PDF file. Permission is file-kind specific: response uploads require submissions:download_files; signed PDFs require submissions:download_pdf.
+        /// Returns JSON containing a short-lived signed URL, not the file bytes. Response uploads, including supporting files, require submissions:download_files; signed PDFs require submissions:download_pdf. Supporting uploads require the document creator for session/OAuth access; explicitly scoped workspace API keys are trusted integration credentials. Privacy is classified from immutable submission metadata, including verified legacy metadata.
         /// </summary>
         /// <returns>A <see cref="global::Formalingo.Sdk.Generated.Models.FileDownloadResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -42,6 +42,7 @@ namespace Formalingo.Sdk.Generated.Api.V1.Files.Item.Download
         /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Files.Item.Download.FileDownloadResponse401Error">When receiving a 401 status code</exception>
         /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Files.Item.Download.FileDownloadResponse403Error">When receiving a 403 status code</exception>
         /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Files.Item.Download.FileDownloadResponse404Error">When receiving a 404 status code</exception>
+        /// <exception cref="global::Formalingo.Sdk.Generated.Api.V1.Files.Item.Download.FileDownloadResponse409Error">When receiving a 409 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Formalingo.Sdk.Generated.Models.FileDownloadResponse?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -57,11 +58,12 @@ namespace Formalingo.Sdk.Generated.Api.V1.Files.Item.Download
                 { "401", global::Formalingo.Sdk.Generated.Api.V1.Files.Item.Download.FileDownloadResponse401Error.CreateFromDiscriminatorValue },
                 { "403", global::Formalingo.Sdk.Generated.Api.V1.Files.Item.Download.FileDownloadResponse403Error.CreateFromDiscriminatorValue },
                 { "404", global::Formalingo.Sdk.Generated.Api.V1.Files.Item.Download.FileDownloadResponse404Error.CreateFromDiscriminatorValue },
+                { "409", global::Formalingo.Sdk.Generated.Api.V1.Files.Item.Download.FileDownloadResponse409Error.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<global::Formalingo.Sdk.Generated.Models.FileDownloadResponse>(requestInfo, global::Formalingo.Sdk.Generated.Models.FileDownloadResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns a short-lived signed URL for a response upload or signed PDF file. Permission is file-kind specific: response uploads require submissions:download_files; signed PDFs require submissions:download_pdf.
+        /// Returns JSON containing a short-lived signed URL, not the file bytes. Response uploads, including supporting files, require submissions:download_files; signed PDFs require submissions:download_pdf. Supporting uploads require the document creator for session/OAuth access; explicitly scoped workspace API keys are trusted integration credentials. Privacy is classified from immutable submission metadata, including verified legacy metadata.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
